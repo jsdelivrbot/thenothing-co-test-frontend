@@ -1,13 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: './public/index.html',
-    filename: 'index.html',
-    inject: 'body'
-})
-
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -21,5 +14,8 @@ module.exports = {
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/}
     ]
   },
-  plugins: [HtmlWebpackPluginConfig]
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './public'
+  }
 }

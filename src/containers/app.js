@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import Header from './header';
 
+import About from './about'
+
 import Home from '../components/home'
 
 export default class App extends Component {
@@ -11,7 +13,8 @@ export default class App extends Component {
       <div>
         <Header />
         <Switch>
-          <Route path="/" component={Home}/>
+          <Route path="/about" component={About} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     );
