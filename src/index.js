@@ -9,10 +9,18 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 
 import App from './containers/app';
 import reducers from './reducers'
+import { AUTH_USER } from './actions/types'
 
 let history = createBrowserHistory();
 let createStoreWithMiddleware = applyMiddleware(reduxThunk, routerMiddleware(history))(createStore);
 let store = createStoreWithMiddleware(reducers);
+
+const token = localStorage.getItem('token');
+// If we have a token, consider the user to be signed in;
+if (token) {
+  // we need to update application state
+  store.dispatch({ type: AUTH_USER });
+}
 
 ReactDOM.render(
   <Provider store={store}>
