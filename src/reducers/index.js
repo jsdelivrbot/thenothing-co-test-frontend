@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
-import appReducer from './app_reducer'
 import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
+import appReducer from './app_reducer';
+import authReducer from './auth_reducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
-  router: routerReducer
+  auth: authReducer,
+  router: routerReducer,
+  form: formReducer
 });
 
 export default rootReducer;
